@@ -5,13 +5,7 @@ const port = 3003;
 const middleware = require("./middleware");
 const path = require("path");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-mongoose
-  .connect(
-    "mongodb+srv://Paul:dbUserPassword@cluster0.wk3jc.mongodb.net/SakuraChatDB?retryWrites=true&w=majority"
-  )
-  .then(() => console.log("DB Connection Successful"))
-  .catch((err) => console.log("DB Connection Error" + err));
+const mongoose = require("./database");
 
 const server = app.listen(port, () => console.log("Listening on port " + port));
 
