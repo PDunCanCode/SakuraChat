@@ -1,5 +1,6 @@
 const express = require("express");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
+const User = require("../schemas/UserSchema");
 
 const app = express();
 const router = express.Router();
@@ -13,7 +14,6 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-
   let firstName = req.body.firstName.trim();
   let lastName = req.body.lastName.trim();
   let username = req.body.username.trim();
@@ -21,14 +21,15 @@ router.post("/", (req, res, next) => {
   let password = req.body.password;
   let payload = req.body;
   if (firstName && lastName && username && email && password) {
-
-
+    User.findOne({
+      $or: [{ username: username }, { email: email }],
+    }).then((user) => {
+      console.log(user);
+    });
   } else {
     payload.errorMessage = "Make sure each field has a valid value";
     res.status(200).render("register", payload);
   }
-
-  
 });
 
 module.exports = router;
