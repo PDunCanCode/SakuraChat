@@ -23,8 +23,22 @@ router.post("/", async (req, res, next) => {
   if (firstName && lastName && username && email && password) {
     let user = await User.findOne({
       $or: [{ username: username }, { email: email }],
+    }).catch((error) => {
+      console.log(error);
+      payload.errorMessage = "Something went wrong.";
+      res.status(200).render("register", payload);
     });
-    console.log(user);
+    if (user === null) {
+      // no user found
+    } else {
+      // user found
+      if (email == user.email) {
+        payload.errorMessage = "Email already in use.";
+      } else {
+        payload.errorMessage = "Username alrady in use.";
+      }
+      res.status(200).render("register", payload);
+    }
   } else {
     payload.errorMessage = "Make sure each field has a valid value";
     res.status(200).render("register", payload);
