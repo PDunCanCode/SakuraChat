@@ -3,6 +3,7 @@
   --buttonHoverBg: #d4edff;
   --lightGrey: rgb(230, 236, 240);
   --spacing: 15px;
+  --blueLight: #9bd1f9;
 }
 
 a {
@@ -80,8 +81,31 @@ nav a:hover {
   height: 50px;
 }
 
-.usserImageContianer img {
+.userImageContianer img {
   width: 100%;
   border-radius: 50%;
   background-color: #fff;
+}
+
+.textareaContainer {
+  flex: 1;
+  padding-left: var(--spacing);
+}
+
+.textareaContainer textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  font-size: 19px;
+}
+
+#submitPostButton {
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  padding: 7px 15px;
+}
+
+#submitPostButton:disabled {
+  background-color: var(--blueLight);
 }
