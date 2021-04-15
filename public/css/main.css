@@ -6,6 +6,10 @@
   --blueLight: #9bd1f9;
 }
 
+* {
+  outline: none !important;
+}
+
 a {
   color: inherit;
 }
@@ -104,6 +108,7 @@ nav a:hover {
   color: white;
   border: none;
   padding: 7px 15px;
+  border-radius: 40px;
 }
 
 #submitPostButton:disabled {
