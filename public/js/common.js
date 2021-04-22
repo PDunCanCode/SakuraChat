@@ -16,5 +16,13 @@ $("#submitPostButton").click(() => {
   let data = {
     content: textbox.val(),
   };
-  $.post("/api/posts", data, (postData, status, xhr) => {});
+  $.post("/api/posts", data, (postData) => {
+    let html = createPostHtml(postData);
+    $(".postsContainer").prepend(html);
+    textbox.val("");
+    button.prop("disabled", true);
+  });
 });
+function createPostHtml(postData) {
+  return postData.content;
+}
