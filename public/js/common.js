@@ -24,5 +24,22 @@ $("#submitPostButton").click(() => {
   });
 });
 function createPostHtml(postData) {
-  return postData.content;
+  return `<div class='post'>
+
+              <div class='mainContainer'>
+                <div class='userImageContainer'>
+                  <img src='${postedBy.profilePic}'>
+                </div>
+                <div class='postContentContainer'>
+                  <div class='header'>
+                  </div>
+                  <div class='postBody'>
+                    <span>${postData.content}</span>
+                  </div>
+                  <div class='postFooter'>
+                  </div>
+                </div>
+              </div>
+
+          /</div>;`;
 }
