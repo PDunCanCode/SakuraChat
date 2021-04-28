@@ -24,6 +24,9 @@ $("#submitPostButton").click(() => {
   });
 });
 function createPostHtml(postData) {
+  let postedBy = postData.postedBy;
+  let displayName = postedBy.firstName + " " + postedBy.lastName;
+  let timestamp = postData.createdAt;
   return `<div class='post'>
 
               <div class='mainContainer'>
@@ -32,6 +35,9 @@ function createPostHtml(postData) {
                 </div>
                 <div class='postContentContainer'>
                   <div class='header'>
+                    <a href='/profile/${postedBy.username}'>${displayName}</a>
+                    <span class='username'>@${postedBy.username}</span>
+                    <span class='date'>${timestamp}</span>
                   </div>
                   <div class='postBody'>
                     <span>${postData.content}</span>
